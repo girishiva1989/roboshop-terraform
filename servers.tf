@@ -7,6 +7,10 @@ resource "aws_instance" "frontend" {
   }
 }
 
+output "instance_ips" {
+  value = aws_instance.frontend.ami
+}
+
 resource "aws_instance" "catalogue" {
   ami           = "ami-0b4f379183e5706b9"
   instance_type = "t3.small"
