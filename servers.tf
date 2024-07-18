@@ -115,13 +115,21 @@ resource "aws_route53_record" "cart" {
   records = [aws_instance.frontend.private_ip]
 }
 
-resource "aws_instance" "cart" {
+resource "aws_instance" "mysql" {
   ami           = data.aws_ami.centos.image_id
   instance_type = "t3.small"
 
   tags = {
     Name = "mysql"
   }
+}
+
+resource "aws_route53_record" "mysql" {
+  zone_id = Z014155316GQK32DIY108
+  name    = "mysql-dev.gdevops89.online"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.frontend.private_ip]
 }
 
 resource "aws_instance" "shipping" {
