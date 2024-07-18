@@ -109,7 +109,7 @@ resource "aws_instance" "cart" {
 
 resource "aws_route53_record" "cart" {
   zone_id = "Z014155316GQK32DIY108"
-  name    = "mongod-dev.gdevops89.online"
+  name    = "cart-dev.gdevops89.online"
   type    = "A"
   ttl     = 300
   records = [aws_instance.frontend.private_ip]
