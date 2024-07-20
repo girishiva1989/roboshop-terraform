@@ -38,7 +38,7 @@ resource "aws_instance" "instances" {
 }
 
 output "instance" {
-  value = [for i in aws_instance.instances : i.id]
+  value = [for i in aws_instance.instances : i.key_name]
 }
 
 # resource "aws_route53_record" "instance" {
