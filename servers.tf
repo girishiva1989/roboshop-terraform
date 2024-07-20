@@ -33,7 +33,7 @@ resource "aws_instance" "instances" {
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
 
   tags = {
-    Name = count.index
+    Name = aws_instance.instances[count.index]
   }
 }
 
