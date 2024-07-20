@@ -38,8 +38,13 @@ resource "aws_instance" "instances" {
 }
 
 output "instance" {
-  value = aws_instance.instances[count.index].public_ip
+  value = [for i in range(aws_instance.instances.count) : aws_instance.instances[i].id]
 }
+
+
+# output "instance" {
+#   value = aws_instance.instances.public_ip
+# }
 #
 # resource "aws_route53_record" "instance" {
 #   zone_id = data.aws_route53_zone.zone.zone_id
