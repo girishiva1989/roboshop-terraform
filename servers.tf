@@ -27,20 +27,18 @@ variable "components" {
 }
 
 resource "aws_instance" "instances" {
-  #count         = length(var.components)
-  for_each = toset(var.components)
+  count         = length(var.components)
   ami           = data.aws_ami.centos.image_id
   instance_type = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
 
   tags = {
-    #Name = var.components[count.index]
-    Name = each.key
+    Name = var.components[count.index]
   }
 }
 
 output "instance" {
-  value = aws_instance.instances.public_ip
+  value = [for i in aws_instance.instances : i.id]
 }
 #
 # resource "aws_route53_record" "instance" {
