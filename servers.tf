@@ -40,7 +40,7 @@ resource "aws_instance" "instances" {
 output "instance" {
   value = [for i in aws_instance.instances : i.id]
 }
-#
+
 # resource "aws_route53_record" "instance" {
 #   zone_id = data.aws_route53_zone.zone.zone_id
 #   name    = "frontend-dev.gdevops89.online"
