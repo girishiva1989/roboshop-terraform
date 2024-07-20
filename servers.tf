@@ -38,7 +38,7 @@ resource "aws_instance" "instances" {
 }
 
 output "instance" {
-  value = aws_instance.instances.public_ip
+  value = aws_instance.instances[count.index].public_ip
 }
 #
 # resource "aws_route53_record" "instance" {
