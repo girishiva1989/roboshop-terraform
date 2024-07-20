@@ -33,21 +33,21 @@ resource "aws_instance" "instances" {
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
 
   tags = {
-    Name = aws_instance.instances[count.index]
+    Name = var.components[count.index]
   }
 }
 
-output "instance" {
-  value = aws_instance.instances.public_ip
-}
-
-resource "aws_route53_record" "instance" {
-  zone_id = data.aws_route53_zone.zone.zone_id
-  name    = "frontend-dev.gdevops89.online"
-  type    = "A"
-  ttl     = 300
-  records = [aws_instance.instances.private_ip]
-}
+# output "instance" {
+#   value = aws_instance.instances.public_ip
+# }
+#
+# resource "aws_route53_record" "instance" {
+#   zone_id = data.aws_route53_zone.zone.zone_id
+#   name    = "frontend-dev.gdevops89.online"
+#   type    = "A"
+#   ttl     = 300
+#   records = [aws_instance.instances.private_ip]
+# }
 
 
 # resource "aws_instance" "catalogue" {
