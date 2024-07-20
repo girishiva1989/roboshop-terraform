@@ -37,9 +37,9 @@ resource "aws_instance" "instances" {
   }
 }
 
-# output "instance" {
-#   value = aws_instance.instances.public_ip
-# }
+output "instance" {
+  value = aws_instance.instances.public_ip
+}
 #
 # resource "aws_route53_record" "instance" {
 #   zone_id = data.aws_route53_zone.zone.zone_id
