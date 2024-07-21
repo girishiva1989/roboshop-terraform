@@ -74,7 +74,6 @@ resource "aws_instance" "instances" {
 }
 
 output "instance" {
-  for_each      = var.components
   value = aws_instance.instances[each.value["name"]].public_ip
 }
 
