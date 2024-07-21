@@ -73,9 +73,9 @@ resource "aws_instance" "instances" {
   }
 }
 
-# output "instance" {
-#   value = aws_instance.instances[each.value["name"]].public_ip
-# }
+output "instance" {
+  value = [for i in aws_instance.instances : i.public_ip]
+}
 
 resource "aws_route53_record" "instance" {
   for_each = var.components
