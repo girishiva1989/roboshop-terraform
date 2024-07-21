@@ -73,6 +73,21 @@ resource "aws_instance" "instances" {
   }
 }
 
+output "instance" {
+  for_each      = var.components
+  value = aws_instance.instances[each.value["name"]].public_ip
+}
+
+# resource "aws_route53_record" "instance" {
+#   for_each = var.components
+#   zone_id = data.aws_route53_zone.zone.zone_id
+#   name    = "frontend-dev.gdevops89.online"
+#   type    = "A"
+#   ttl     = 300
+#   records = [aws_instance.instances[each.value["name"]].private_ip]
+# }
+
+
 # variable "components" {
 #   default = ["frontend","mongod","catalogue","redis","user","cart","mysql","shipping","rabbitmq",
 #   "payment"]
