@@ -40,8 +40,8 @@ resource "aws_instance" "instances" {
 }
 
 output "instance" {
-  #value = [for i in aws_instance.instances : i.public_ip]
-  value = aws_instance.instances.public_ip
+  value = [for i in aws_instance.instances : i.public_ip]
+#   value = var.components[each.key]
 }
 
 # resource "aws_route53_record" "instance" {
