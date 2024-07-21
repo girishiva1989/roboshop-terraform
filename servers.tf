@@ -20,7 +20,7 @@ data "aws_security_group" "allow-all"{
 variable "components" {
   default = {
     frontend = {
-      name          = "fronend"
+      name          = "frontend"
       instance_type = "t3.small"
     }
     mongod = {
