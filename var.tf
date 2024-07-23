@@ -1,3 +1,3 @@
-#variable "env" {}
+variable "env" {}
 variable "components" {}
 variable "data" {}
