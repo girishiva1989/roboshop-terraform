@@ -30,7 +30,7 @@ resource "null_resource" "null" {
     inline = [
       "git clone https://github.com/girishiva1989/roboshop-shell-second.git",
       "cd roboshop-shell-second",
-      "sudo bash ${each.value["name"]}.sh",
+      "sudo bash ${each.value["name"]}.sh ${each.value["password"]}"
     ]
   }
 }
