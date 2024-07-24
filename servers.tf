@@ -11,6 +11,22 @@ resource "aws_instance" "instances" {
   tags = {
     Name = each.value["name"]
   }
+
+  provisioner "remote-exec" {
+
+    connection {
+      type     = "ssh"
+      user     = "centos"
+      password = "DevOps321"
+      host     = self.private_ip
+    }
+
+    inline = [
+      "git clone https://github.com/girishiva1989/roboshop-shell-second.git",
+      "cd roboshop-shell-second",
+      "sudo bash ${each.value["name"]}.sh",
+    ]
+  }
 }
 
 output "instance" {
