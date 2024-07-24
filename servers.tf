@@ -24,7 +24,7 @@ resource "null_resource" "null" {
       type     = "ssh"
       user     = "centos"
       password = "DevOps321"
-      host     = aws_instance.instances[each.value["name"]]
+      host     = aws_instance.instances[each.value["name"]].private_ip
     }
 
     inline = [
