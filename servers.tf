@@ -1,3 +1,9 @@
+#there is a inter dependency between the blocks, R53 is created if resource is create
+# and resource is created if provisioner is created and provisioner is not created because R53 is not created
+# to avoid this provisioner is placed in null_resource
+#In this approach first resource will be created and then both null resource and R53 will run in parallel, but this also wrong
+#But my requirement is first resource should be created, then R53 and then null resource should be created
+#To avoid this we should use depends_on, here it will wait for mentioned resource to get created and then null resource will be created
 output "ami_id" {
   value = data.aws_ami.centos.image_id
 }
