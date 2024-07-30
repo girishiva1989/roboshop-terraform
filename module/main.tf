@@ -40,9 +40,6 @@ resource "null_resource" "null" {
   }
 }
 
-output "instance" {
-  value = [for i in aws_instance.instances : i.public_ip]
-}
 
 resource "aws_route53_record" "instance" {
   zone_id = data.aws_route53_zone.zone.zone_id
